@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import css from './Filter.module.css'
+import { PropTypes } from 'prop-types'
 
-export default class Filter extends Component {
-    render() {
-        const { updateFilterState, filter } = this.props;
-        return (
-            <>
+
+export default function Filter({ updateFilterState, filter }) {
+    return (
+        <>
             <p className={css.label}>Find contacts by name</p>
             <input
                 type="text"
@@ -13,7 +13,11 @@ export default class Filter extends Component {
                 className={css.filterInput}
                 onChange={e => updateFilterState(e.target.value)}
             />
-            </>
-        )
-    }
+        </>
+    )
+}
+
+Filter.propTypes = {
+    updateFilterState: PropTypes.func.isRequired,
+    filter: PropTypes.string.isRequired,
 }
